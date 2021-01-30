@@ -12,17 +12,16 @@ const handler = async (event) => {
   //   return { statusCode: 500, body: error.toString() }
   // }
   try {
-    const stripe = require("stripe")(
-      "sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst"
+    const stripe = require('stripe')(
+      'sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst'
     );
 
     const products = await stripe.products.list({
-      limit: 2,
-      starting_after: event.body,
+      limit: 10,
     });
     return {
       statusCode: 200,
-      body: JSON.stringify(prices, null, 2),
+      body: JSON.stringify(products, null, 2),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
