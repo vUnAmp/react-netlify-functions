@@ -12,12 +12,13 @@ const handler = async (event) => {
   //   return { statusCode: 500, body: error.toString() }
   // }
   try {
-    const stripe = require('stripe')(
-      'sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst'
+    const stripe = require("stripe")(
+      "sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst"
     );
 
-    const products = await stripe.products.list({
-      limit: 6,
+    const products = await stripe.prices.list({
+      limit: 2,
+      starting_after: event.body,
     });
     return {
       statusCode: 200,
