@@ -30,10 +30,3 @@ const handler = async (event) => {
 };
 
 module.exports = { handler };
-// const stripe = require('stripe')(
-//   'sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst'
-// );
-
-// const products = await stripe.products.list({
-//   limit: 3,
-// });
