@@ -15,13 +15,14 @@ const handler = async (event) => {
     const stripe = require('stripe')(
       'sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst'
     );
-
-    const products = await stripe.products.list({
-      limit: 6,
+    console.log(event.body);
+    const prices = await stripe.prices.list({
+      limit: 2,
+      // starting_after: event.body,
     });
     return {
       statusCode: 200,
-      body: JSON.stringify(products, null, 2),
+      body: JSON.stringify(prices, null, 2),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
