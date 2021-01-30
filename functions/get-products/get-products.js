@@ -17,7 +17,7 @@ const handler = async (event) => {
     );
 
     const products = await stripe.products.list({
-      limit: 3,
+      limit: 6,
     });
     return {
       statusCode: 200,
