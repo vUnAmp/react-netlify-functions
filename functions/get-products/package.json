@@ -1,0 +1,14 @@
+{
+  "name": "get-products",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get-products.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "stripe": "^8.132.0"
+  }
+}
