@@ -16,7 +16,7 @@ require('dotenv').config();
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#11cbf7',
+      main: '#556cd6',
     },
   },
 });

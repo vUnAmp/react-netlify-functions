@@ -1,10 +1,11 @@
 import ProductList from '../../components/ProductList';
+import MainLayout from '../../layout/MainLayout';
 
 const Store = () => {
   return (
-    <div>
+    <MainLayout>
       <ProductList />
-    </div>
+    </MainLayout>
   );
 };
 
