@@ -9,13 +9,25 @@ import { Provider } from 'react-redux';
 
 import { store } from './redux/createStore';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
 require('dotenv').config();
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#11cbf7',
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
