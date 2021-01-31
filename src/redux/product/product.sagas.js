@@ -10,9 +10,11 @@ export function* fetchProducts() {
   const { pricesData, productsData } = products;
   const allProducts = productsData.data.map((product, i) => {
     let price = pricesData.data[i].unit_amount;
+    let priceId = pricesData.data[i].id;
     return {
       ...product,
       price,
+      priceId,
     };
   });
 

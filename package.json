@@ -4,6 +4,7 @@
   "private": true,
   "author": "StevPhan <lebenistcode@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "@stripe/stripe-js": "^1.11.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",

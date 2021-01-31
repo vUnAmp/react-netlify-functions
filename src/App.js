@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import './App.css';
 import Store from './pages/Store';
 import Home from './pages/Home';
+import Success from './pages/Success';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/store">
           <Store />
+        </Route>
+        <Route path="/success">
+          <Success />
         </Route>
       </Switch>
     </div>
