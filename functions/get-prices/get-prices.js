@@ -12,9 +12,7 @@ const handler = async (event) => {
   //   return { statusCode: 500, body: error.toString() }
   // }
   try {
-    const stripe = require('stripe')(
-      'sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst'
-    );
+    const stripe = require('stripe')(process.env.STRIPE_S_KEY);
 
     const prices = await stripe.prices.list({
       limit: 10,
