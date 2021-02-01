@@ -105,3 +105,11 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
+const totalPrie = (arr) => {
+  let total = 0;
+  for (let item of arr) {
+    total += item.price * item.quantity;
+  }
+  return total;
+};

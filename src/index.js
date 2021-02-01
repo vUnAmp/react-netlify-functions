@@ -12,7 +12,6 @@ import { store } from './redux/createStore';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
-require('dotenv').config();
 const theme = createMuiTheme({
   palette: {
     primary: {

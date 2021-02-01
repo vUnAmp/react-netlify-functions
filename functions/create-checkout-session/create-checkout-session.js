@@ -4,8 +4,6 @@ const handler = async (event) => {
     const stripe = require('stripe')(process.env.STRIPE_S_KEY);
     // console.log(JSON.parse(event.body));
     const session = await stripe.checkout.sessions.create({
-      // success_url: 'https://google.com',
-      // cancel_url: 'https://google.com',
       success_url: `${redirectUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: redirectUrl,
       payment_method_types: ['card'],
