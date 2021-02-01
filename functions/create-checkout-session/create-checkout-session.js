@@ -1,9 +1,7 @@
 const redirectUrl = 'http://localhost:8888';
 const handler = async (event) => {
   try {
-    const stripe = require('stripe')(
-      'sk_test_51ID5u4GWkqJcBCp8YECot6MnqAov1jnOAgRaBHeQKU3H9HzURDez9UT2W0JP4JjXHqcxKCbqF8wshCG3FCmDO9NW00XnbWLLst'
-    );
+    const stripe = require('stripe')(process.env.STRIPE_S_KEY);
     // console.log(JSON.parse(event.body));
     const session = await stripe.checkout.sessions.create({
       // success_url: 'https://google.com',
