@@ -1,71 +1,68 @@
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 
+// Material UI
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+
+// Redux
 import { useSelector } from 'react-redux';
 
 import handleCheckOut from '../../stripe/checkout';
+import Menubar from './Menubar';
+
+const useStyles = makeStyles(() => ({
+  header: {
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+
+  logo: {
+    color: 'red',
+  },
+  cart: {
+    position: 'relative',
+  },
+  cartCount: {
+    position: 'absolute',
+    top: '-80%',
+    right: '-35%',
+  },
+}));
 
 const mapState = ({ cart }) => ({
   cartItems: cart.cartItems,
 });
 const Header = () => {
   const { cartItems } = useSelector(mapState);
+  const classes = useStyles();
   const countItems = cartItems.reduce(
     (quantity, cartItem) => quantity + cartItem.quantity,
     0
   );
-  const history = useHistory();
-  const [state, setState] = useState(false);
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState(open);
-  };
 
   return (
     <div>
-      <h1>RepairPhone24DE</h1>
-      <p>Your Cart {countItems} item </p>
-      <Button onClick={() => handleCheckOut(cartItems)} variant="outlined">
-        Check out
-      </Button>
-      <Button onClick={toggleDrawer(true)}>Open burger menu</Button>
-      <SwipeableDrawer
-        anchor="right"
-        open={state}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-        transitionDuration={{ enter: 300, exit: 200 }}
-      >
-        <div
-          style={{ width: '600px' }}
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          Hello
-          <ListItem>
-            {' '}
-            <ListItemText
-              primary="store"
-              onClick={() =>
-                setTimeout(() => {
-                  history.push('/store');
-                }, 250)
-              }
-            />
-          </ListItem>
+      <Grid container className={classes.header}>
+        <div className={classes.logo}>
+          <h3>RP24de</h3>
         </div>
-      </SwipeableDrawer>
+        <div className={classes.cart}>
+          <p
+            className={classes.cartCount}
+            style={countItems > 9 ? { right: '-75%' } : { right: '-35%' }}
+          >
+            {countItems}
+          </p>
+          <ShoppingCartOutlinedIcon />
+        </div>
+        <Button onClick={() => handleCheckOut(cartItems)} variant="outlined">
+          Check out
+        </Button>
+        <Menubar />
+      </Grid>
     </div>
   );
 };
